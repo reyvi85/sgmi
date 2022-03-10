@@ -1,0 +1,1 @@
+<a class="btn btn-link" href="{{route('cd.pc',$IdPC)}}"><i class="fas fa-laptop"></i></a>
