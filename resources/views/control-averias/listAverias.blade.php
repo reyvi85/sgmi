@@ -32,6 +32,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Averia</th>
                                     <th scope="col">Departamento</th>
+                                    <th scope="col"># Inventario</th>
                                     <th scope="col">Reporta</th>
                                     <th scope="col">Red</th>
                                     @if (Auth::user()->dpto == 1)
@@ -105,6 +106,7 @@
                     {data: 'id'},
                     {data: 'Averia'},
                     {data: 'Departamento'},
+                    {data: 'inventario'},
                     {data: 'nombre'},
                     {data: 'Lugar'},
                     @if (Auth::user()->dpto == 1)
@@ -112,7 +114,6 @@
                     @endif
                     {data: 'Fecha'},
                     {data: 'Estado'},
-                    //{data: 'IdPC'},
                     {data: 'btn'},
                 ]
             });

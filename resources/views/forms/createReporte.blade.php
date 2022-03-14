@@ -10,12 +10,17 @@
                     <form action="{{route('averia.store')}}" method="post">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
                                 <label for="nombre">NOMBRE:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre')}}">
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-2">
+                                <label for="nombre"># INVENTARIO:</label>
+                                <input type="text" class="form-control" id="numero_inventario" name="numero_inventario" value="{{old('numero_inventario')}}">
+                            </div>
+
+                            <div class="form-group col-md-5">
                                 <label for="nm_averia_id">AVERÍA:</label>
                                 <select id="nm_averia_id" class="form-control" name="nm_averia_id">
                                     @foreach($averias as $row)

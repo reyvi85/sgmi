@@ -10,6 +10,7 @@ class Averia extends Model
         'user_id',
         'nm_averia_id',
         'nm_departamento_id',
+        'numero_inventario',
         'nombre',
         'lugar',
         'num_reporte_etecsa',

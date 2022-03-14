@@ -68,6 +68,7 @@ class ReporteAveriaController extends Controller
            'user_id'=>Auth::id(),
            'nm_averia_id'=>$request->nm_averia_id,
            'nm_departamento_id'=>$request->nm_departamento_id,
+           'numero_inventario'=>$request->numero_inventario,
            'nombre'=>$request->nombre,
            'lugar'=>$request->lugar,
            'num_reporte_etecsa'=>$request->num_reporte_etecsa,
