@@ -154,9 +154,7 @@ class DataTableDataRepository
 
     public function getAverias($dpto = null, $state=null)
     {
-     $botones = (\auth()->check())?'control-averias/botones':'control-averias/botones_publico';
         $dpto = (is_null($dpto))?1:$dpto;
-        //$state = (is_null($state))?['<',3]:$state;
         return datatables()->eloquent(ViewAveria::query()
             ->where(function ($q) use($state, $dpto){
                 $q->where('flag',$dpto);
