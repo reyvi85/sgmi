@@ -154,13 +154,29 @@ class DataTableDataRepository
 
     public function getAverias($dpto = null, $state=null)
     {
-       // dd(Auth::id());
+     $botones = (\auth()->check())?'control-averias/botones':'control-averias/botones_publico';
         $dpto = (is_null($dpto))?1:$dpto;
-        $state = (is_null($state))?1:$state;
+        //$state = (is_null($state))?['<',3]:$state;
         return datatables()->eloquent(ViewAveria::query()
-            ->where('flag',$dpto)
-            ->where('num_estado',$state))
+            ->where(function ($q) use($state, $dpto){
+                $q->where('flag',$dpto);
+                if(is_null($state)){
+                    $q->where('num_estado','<',3);
+                }else{
+                    $q->where('num_estado',$state);
+                }
+            }))
+
             ->addColumn('btn','control-averias/botones')
+            ->rawColumns(['btn'])
+            ->toJson();
+    }
+
+    public function getAveriasPublicas()
+    {
+        return datatables()->eloquent(ViewAveria::query()
+            ->where('num_estado','<',3))
+            ->addColumn('btn','control-averias/botones_publico')
             ->rawColumns(['btn'])
             ->toJson();
     }

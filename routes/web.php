@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 });
 Route::get('averias/', 'ReporteAveriaController@publicList')->name('averiaPublica.list');
-Route::get('averias/{averium}', 'ReporteAveriaController@publicShow')->name('averiaPublica.show');
+Route::get('averias/publica/{averium}', 'ReporteAveriaController@publicShow')->name('averiaPublica.show');
 
 Route::prefix('administrar')->middleware(['auth','CheckAdmin'])->group(function (){
     Route::prefix('usuarios')->group(function () {

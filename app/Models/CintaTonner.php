@@ -16,4 +16,5 @@ class CintaTonner extends Model
     {
         $this->attributes['name'] = strtoupper($value);
     }
+
 }

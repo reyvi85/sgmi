@@ -40,7 +40,7 @@
         $(document).ready(function () {
             $('#averias').DataTable({
                 "serverSide":true,
-                "ajax":"{{url('api/averias/1')}}",
+                "ajax":"{{url('api/averias-publicas/')}}",
                 "columns":[
                     {data: 'id'},
                     {data: 'Averia'},

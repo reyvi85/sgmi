@@ -88,6 +88,10 @@ Route::get('averias/{dpto?}/{state?}', function ($dpto =null, $state=null) use($
     return $repository->getAverias($dpto,$state);
 })->where('state', '[1-3]');
 
+Route::get('averias-publicas/', function () use($repository) {
+    return $repository->getAveriasPublicas();
+});
+
 
 
 

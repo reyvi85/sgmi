@@ -20,6 +20,7 @@
                                     <th scope="col">Fabricante</th>
                                     <th scope="col">Tipo</th>
                                     <th class="text-center" scope="col">Cinta/Tonner</th>
+                                    <th class="text-center" scope="col">Necesidad</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -31,6 +32,7 @@
                                         <td>{{$row->nm_fabricante->name}}</td>
                                         <td>{{$row->nm_printer->name}}</td>
                                         <td class="text-center">{{$row->cinta_tonners_count}}</td>
+                                        <td class="text-center">{{$row->cinta_tonners_count * 12}}</td>
                                         <td class="text-right">
                                             <form action="{{route('nmModelPrinter.destroy', $row->id)}}" method="post">
                                                 @csrf

@@ -17,6 +17,8 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
+                                    <th class="text-center" scope="col">Impresoras</th>
+                                    <th class="text-center" scope="col">Necesidad</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -25,6 +27,8 @@
                                     <tr>
                                         <th scope="row">{{$row->id}}</th>
                                         <td>{{$row->name}}</td>
+                                        <td class="text-center">{{$row->nm_model_printers_count}}</td>
+                                        <td class="text-center">{{$row->nm_model_printers_count * 12}}</td>
                                         <td class="text-right">
                                             <form action="{{route('cintaTonner.destroy', $row->id)}}" method="post">
                                                 @csrf
