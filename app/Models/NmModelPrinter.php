@@ -16,6 +16,10 @@ class NmModelPrinter extends Model
         return $this->belongsTo(NmPrinter::class);
     }
 
+    public function cinta_tonners(){
+        return $this->belongsToMany(CintaTonner::class);
+    }
+
     /** M U T A D O R E S */
     public function setNameAttribute($value)
     {

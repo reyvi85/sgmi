@@ -29,7 +29,7 @@
                 @auth
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
+
                     <ul class="navbar-nav mr-auto">
                         @if(Auth::user()->dpto == 1)
                         <li class="nav-item">
@@ -76,7 +76,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('nmPrinter.index')}}"><i class="fas fa-print"></i> Tipos Impresoras</a>
                                         <a class="dropdown-item" href="{{route('nmModelPrinter.index')}}"><i class="fas fa-print"></i> Modelos Impresoras</a>
-                                        <a class="dropdown-item" href="{{route('nmModelPrinter.index')}}"><i class="fas fa-print"></i> Tonner y cintas</a>
+                                        <a class="dropdown-item" href="{{route('cintaTonner.index')}}"><i class="fas fa-print"></i> Tonner y cintas</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('nmVoltaje.index')}}"><i class="fas fa-bolt"></i> Voltaje</a>
                                         <div class="dropdown-divider"></div>

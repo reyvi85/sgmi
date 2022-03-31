@@ -14,21 +14,7 @@
                 <i class="fas fa-list"></i> Lista de componentes
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ADD_Components">
-                <a class="dropdown-item" href="{{route('board.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Motherboard</a>
-                <a class="dropdown-item" href="{{route('procesador.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Microprocesador</a>
-                <a class="dropdown-item" href="{{route('fuente.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Fuente Interna</a>
-                <a class="dropdown-item" href="{{route('hdd.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> HDD</a>
-                <a class="dropdown-item" href="{{route('ram.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Memoria RAM</a>
-                <a class="dropdown-item" href="{{route('cd.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Lector de CD/DVD</a>
-                <a class="dropdown-item" href="{{route('tvideo.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Tarjeta de video</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{route('monitor.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Monitor</a>
-                <a class="dropdown-item" href="{{route('teclado.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Teclado</a>
-                <a class="dropdown-item" href="{{route('mouse.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Mouse</a>
-                <a class="dropdown-item" href="{{route('backup.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> UPS</a>
-                <a class="dropdown-item" href="{{route('printer.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Impresora</a>
-                <a class="dropdown-item" href="{{route('speaker.pc', $computadora->id)}}"><i class="fas fa-plus-circle"></i> Speaker</a>
-
+                @include('partial.componentesLink',["computadora"=>$computadora->id])
             </div>
         </div>
     </div>

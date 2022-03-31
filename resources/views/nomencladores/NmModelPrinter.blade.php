@@ -19,6 +19,7 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Fabricante</th>
                                     <th scope="col">Tipo</th>
+                                    <th class="text-center" scope="col">Cinta/Tonner</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -29,6 +30,7 @@
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->nm_fabricante->name}}</td>
                                         <td>{{$row->nm_printer->name}}</td>
+                                        <td class="text-center">{{$row->cinta_tonners_count}}</td>
                                         <td class="text-right">
                                             <form action="{{route('nmModelPrinter.destroy', $row->id)}}" method="post">
                                                 @csrf
@@ -58,10 +60,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form action="{{route('nmModelPrinter.store')}}" method="post">
+                    @csrf
                 <div class="modal-body">
-                    <form action="{{route('nmModelPrinter.store')}}" method="post">
-                        @csrf
-
                         <div class="form-group">
                             <label for="validationDefault01">Nombre</label>
                             <input type="text" class="form-control" id="validationDefault01" placeholder="Nombre..." name="name" value="{{old('name')}}">
@@ -84,12 +85,21 @@
                                 @endforeach
                             </select>
                         </div>
-                </div>
+
+                        <div class="form-group">
+                            <label for="validationDefault02">Cinta/Tonners:</label>
+                            <select class="custom-select" multiple name="cinta_tonners[]" id="add_cinta_tonner">
+                                @foreach($cintaTonners as $ct)
+                                    <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -105,10 +115,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form action="{{route('nmModelPrinter.update', $row->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
                     <div class="modal-body">
-                        <form action="{{route('nmModelPrinter.update', $row->id)}}" method="post">
-                            @csrf
-                            @method('PUT')
+
                             <div class="form-group">
                                 <label for="validationDefault01">Nombre:</label>
                                 <input type="text" class="form-control" id="validationDefault01" placeholder="Nombre ..." name="name" value="{{$row->name}}">
@@ -131,12 +142,21 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="validationDefault02">Cinta/Tonners:</label>
+                                <select class="custom-select" multiple name="cinta_tonners[]" id="edit_cinta_tonner">
+                                    @foreach($cintaTonners as $ct)
+                                        <option value="{{$ct->id}}" {{($row->cinta_tonners->pluck('id')->contains($ct->id))?'selected':''}}>{{$ct->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -53,6 +53,7 @@ Route::prefix('nomencladores')->middleware(['auth','CheckDpto:1'])->group(functi
 
     Route::resource('nmPrinter', 'NmPrinterController')->except(['show', 'create','edit']);
     Route::resource('nmModelPrinter', 'NmModelPrinterController')->except(['show', 'create','edit']);
+    Route::resource('cintaTonner', 'CintaTonnersController')->except(['show', 'create','edit']);
 
 
 

@@ -127,7 +127,7 @@ class ReporteAveriaController extends Controller
             'solucion_user'=>Auth::id()
         ])->save();
         flash()->success('Se ha solucionado y cerrado a esta avería')->important();
-        return redirect()->route('averia.index');
+        return redirect()->route('averia.index',["estado"=>2]);
     }
 
     /**

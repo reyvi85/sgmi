@@ -7,6 +7,7 @@
  */
 
 namespace App\Repository;
+use App\Models\CintaTonner;
 use App\Models\NmAveria;
 use App\Models\NmCapacidadHdd;
 use App\Models\NmConector;
@@ -71,8 +72,15 @@ class NomencladoresRepository
     public function getPrinterType(){
         return NmPrinter::orderBy('name','ASC')->get();
     }
+
+
+
     public function getModelPrinter(){
-        return NmModelPrinter::orderBy('name','ASC')->get();
+        //return NmModelPrinter::orderBy('name','ASC')->get();
+        return NmModelPrinter::with(['nm_fabricante', 'nm_printer', 'cinta_tonners'])
+            ->withCount('cinta_tonners')
+            ->orderBy('name','ASC')
+            ->get();
     }
 
     public function getBoardGeneracion(){
@@ -81,6 +89,10 @@ class NomencladoresRepository
 
     public function getProcesadorType(){
         return NmProcesador::orderBy('name','ASC')->get();
+    }
+
+    public function getCintasTonners(){
+        return CintaTonner::orderBy('name','ASC')->get();
     }
 
     public function getInchMonitor(){

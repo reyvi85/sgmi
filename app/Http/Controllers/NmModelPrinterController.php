@@ -28,10 +28,12 @@ class NmModelPrinterController extends Controller
      */
     public function index()
     {
-        $lista = NmModelPrinter::with(['nm_fabricante', 'nm_printer'])->orderBy('name','ASC')->get();
+        $lista = $this->nomencalador->getModelPrinter(); //NmModelPrinter::with(['nm_fabricante', 'nm_printer'])->orderBy('name','ASC')->get();
+       // dd($lista);
         $tipo = $this->nomencalador->getPrinterType();
         $fabricantes = $this->nomencalador->getFabricantes();
-        return view('nomencladores.NmModelPrinter',compact('lista', 'tipo', 'fabricantes'));
+        $cintaTonners = $this->nomencalador->getCintasTonners();
+        return view('nomencladores.NmModelPrinter',compact('lista', 'tipo', 'fabricantes', 'cintaTonners'));
     }
 
     /**
@@ -52,7 +54,8 @@ class NmModelPrinterController extends Controller
      */
     public function store(NmModelPrinterStoreRequest $request)
     {
-        NmModelPrinter::create($request->all());
+       $nmp =  NmModelPrinter::create($request->all());
+       $nmp->cinta_tonners()->sync($request->cinta_tonners);
         return redirect()->route('nmModelPrinter.index');
     }
 
@@ -67,7 +70,8 @@ class NmModelPrinterController extends Controller
     public function update(NmModelPrinterUpdateRequest $request, NmModelPrinter $nmModelPrinter)
     {
        $nmModelPrinter->fill(request()->all())->save();
-        return redirect()->route('nmModelPrinter.index');
+       $nmModelPrinter->cinta_tonners()->sync($request->cinta_tonners);
+       return redirect()->route('nmModelPrinter.index');
     }
 
     /**

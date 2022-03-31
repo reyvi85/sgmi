@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests\Nomencladores;
 
+use App\Repository\NomencladoresRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NmModelPrinterStoreRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +26,8 @@ class NmModelPrinterStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:nm_model_printers'
+            'name'=>'required|unique:nm_model_printers',
+            'cinta_tonners'=>['required']
         ];
     }
 }

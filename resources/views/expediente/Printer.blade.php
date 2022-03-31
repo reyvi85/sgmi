@@ -26,7 +26,7 @@
                                     <td class="text-center">{{$row->model}}</td>
                                     <td class="text-center">{{$row->inventario}}</td>
                                     <td class="text-center">{{selectName($fabricantes, $row->nm_model_printer->nm_fabricante_id)}}</td>
-                                    <td class="text-center">{{$row->nm_model_printer->name}}</td>
+                                    <td class="text-center">{{$row->nm_model_printer->nm_printer->name}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -49,7 +49,7 @@
             <strong>INVENTARIO: </strong>{{$row->inventario}}<br>
 
             <strong>FABRICANTE: </strong>{{selectName($fabricantes, $row->nm_model_printer->nm_fabricante_id)}}<br>
-            <strong>TIPO: </strong> {{$row->nm_model_printer->name}}<br>
+            <strong>TIPO: </strong> {{$row->nm_model_printer->nm_printer->name}}<br>
             <hr>
         @endforeach
 
