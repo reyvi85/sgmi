@@ -73,10 +73,7 @@ class NomencladoresRepository
         return NmPrinter::orderBy('name','ASC')->get();
     }
 
-
-
     public function getModelPrinter(){
-        //return NmModelPrinter::orderBy('name','ASC')->get();
         return NmModelPrinter::with(['nm_fabricante', 'nm_printer', 'cinta_tonners'])
             ->withCount('cinta_tonners')
             ->orderBy('name','ASC')
@@ -94,6 +91,10 @@ class NomencladoresRepository
     public function getCintasTonners(){
         return CintaTonner::withCount('nm_model_printers')
         ->orderBy('name','ASC')->get();
+    }
+
+    public function getCintasTonnersOnly(){
+        return CintaTonner::orderBy('name','ASC')->get();
     }
 
     public function getInchMonitor(){

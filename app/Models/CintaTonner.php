@@ -12,6 +12,10 @@ class CintaTonner extends Model
         return $this->belongsToMany(NmModelPrinter::class);
     }
 
+    public function entregaCintaTonners(){
+        return $this->hasMany(EntregaCintaTonner::class);
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = strtoupper($value);

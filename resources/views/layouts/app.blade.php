@@ -125,7 +125,10 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->admin == true)
                                         <a class="dropdown-item" href="{{ route('user.index') }}"><i class="fas fa-user"></i> Gestion de usuarios</a>
+                                        <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('entradaMedio.index') }}"><i class="fas fa-retweet"></i> Entrega de medios</a>
+                                        <a class="dropdown-item" href="{{ route('entregaCintaTonner.index') }}"><i class="fas fa-paper-plane"></i> Entrega de Cinta/Tonners</a>
+                                        <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('cmd') }}"><i class="fas fa-code"></i> Consola de comandos</a>
                                         <div class="dropdown-divider"></div>
                                     @endif

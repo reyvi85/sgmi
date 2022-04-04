@@ -16,6 +16,10 @@ class NmUeb extends Model
         return $this->hasMany(EntradaMedio::class);
     }
 
+    public function entregaCintaTonners(){
+        return $this->hasMany(EntregaCintaTonner::class);
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = strtoupper($value);
