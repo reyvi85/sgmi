@@ -9,6 +9,7 @@ class EntregaCintaTonner extends Model
     protected $fillable = [
         'cantidad',
         'series',
+        'numero_inventario',
         'nota',
         'nm_ueb_id',
         'cinta_tonner_id'

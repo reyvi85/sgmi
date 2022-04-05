@@ -18,6 +18,7 @@
                                     <th scope="col">UEB</th>
                                     <th scope="col">Cinta/Tonner</th>
                                     <th scope="col">Cantidad</th>
+                                    <th scope="col"># Inventario</th>
                                     <th scope="col">Serie</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col"></th>
@@ -30,6 +31,7 @@
                                     <td>{{$row->nm_ueb->name}}</td>
                                     <td>{{$row->cintaTonner->name}}</td>
                                     <td>{{$row->cantidad}}</td>
+                                    <td>{{$row->numero_inventario}}</td>
                                     <td>{{$row->serie}}</td>
                                     <td>{{$row->created_at}}</td>
                                     <td  class="align-middle" style="width: 15%">
@@ -71,12 +73,17 @@
                     <div class="form-row">
                         <div class="form-group col-2">
                             <label for="validationTextarea">Cantidad:</label>
-                            <input type="text" class="form-control" id="cantidad" name="cantidad" value="1"></input>
+                            <input type="text" class="form-control" id="cantidad" name="cantidad" value="{{ old('cantidad') }}">
                         </div>
 
-                        <div class="form-group col-10">
+                        <div class="form-group col-2">
+                            <label for="validationTextarea"># Inventario:</label>
+                            <input type="text" class="form-control" id="cantidad" name="numero_inventario" value="{{ old('numero_inventario') }}">
+                        </div>
+
+                        <div class="form-group col-8">
                             <label for="validationTextarea">Series:</label>
-                            <input type="text" class="form-control" id="series" name="series"></input>
+                            <input type="text" class="form-control" id="series" name="series" value="{{ old('numero_inventario') }}">
                         </div>
                     </div>
 
@@ -85,7 +92,7 @@
                             <label for="validationDefault02">UEB:</label>
                             <select class="custom-select" name="nm_ueb_id">
                                 @foreach($uebs as $row)
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    <option value="{{$row->id}}" {{($row->id == old('nm_ueb_id'))?'selected':''}}>{{$row->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -94,7 +101,7 @@
                             <label for="validationDefault02">Cintas/Tonners:</label>
                             <select class="custom-select" name="cinta_tonner_id">
                                 @foreach($ct as $row)
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    <option value="{{$row->id}}" {{($row->id == old('cinta_tonner_id'))?'selected':''}}>{{$row->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -103,7 +110,7 @@
 
                         <div class="form-group">
                             <label for="validationTextarea">Descripción:</label>
-                            <textarea class="form-control" id="validationTextarea" name="descripcion"></textarea>
+                            <textarea class="form-control" id="validationTextarea" name="nota">{{old('nota')}}</textarea>
                         </div>
 
 
@@ -130,7 +137,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6"><strong>UEB:</strong> {{$rowD->nm_ueb->name}}</div>
+                        <div class="col-md-3"><strong>UEB:</strong> {{$rowD->nm_ueb->name}}</div>
+                        <div class="col-md-3"><strong># Inventario: </strong> {{$rowD->numero_inventario}}</div>
                         <div class="col-md-3"><strong>Cinta/Tonner: </strong> {{$rowD->cintaTonner->name}}</div>
                         <div class="col-md-3"><strong>Cantidad: </strong> {{$rowD->cantidad}}</div>
                     </div>
@@ -156,8 +164,9 @@
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
-               <form action="{{route('entregaCintaTonner.update', $rowD->id)}}" method="post">
+               <form action="{{route('entregaCintaTonner.update', $rowD->id)}}" method="post" id="FormEDIT-{{$rowD->id}}">
                    @csrf
+                   @method('PUT')
                    <div class="modal-body">
 
                        <div class="form-row">
@@ -166,7 +175,12 @@
                                <input type="text" class="form-control" id="cantidad" name="cantidad" value="{{$rowD->cantidad}}">
                            </div>
 
-                           <div class="form-group col-10">
+                           <div class="form-group col-2">
+                               <label for="validationTextarea"># Inventario:</label>
+                               <input type="text" class="form-control" id="cantidad" name="numero_inventario" value="{{$rowD->numero_inventario}}">
+                           </div>
+
+                           <div class="form-group col-8">
                                <label for="validationTextarea">Series:</label>
                                <input type="text" class="form-control" id="series" name="series" value="{{$rowD->series}}">
                            </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Views\ViewPrinter;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EntregaCintaTonnersRequest extends FormRequest
@@ -23,8 +24,17 @@ class EntregaCintaTonnersRequest extends FormRequest
      */
     public function rules()
     {
+        $aux = ViewPrinter::where('UEB_id', request()->nm_ueb_id)->get();
         return [
-            'cantidad'=>'required|integer'
+            'cantidad'=>'required|integer',
+            'numero_inventario'=>['required', 'in:'.$aux->pluck('inventario')->implode(',')]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'numero_inventario.in'=>"El número de inventario no está asociado a la UEB o no existe"
         ];
     }
 }
