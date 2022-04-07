@@ -27,6 +27,7 @@ Route::prefix('administrar')->middleware(['auth','CheckAdmin'])->group(function 
     });
     Route::resource('entradaMedio', 'EntradaMediosController')->except(['show','create', 'edit']);
     Route::resource('entregaCintaTonner', 'EntregaCintaTonnersController')->except(['show','create', 'edit']);
+    Route::resource('entregaBateria', 'EntregaBateriasController')->except(['show','create', 'edit']);
     Route::get('cmd/{comando?}', function($comando = 'list'){
         Artisan::call($comando);
         dd(Artisan::output());

@@ -128,6 +128,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('entradaMedio.index') }}"><i class="fas fa-retweet"></i> Entrega de medios</a>
                                         <a class="dropdown-item" href="{{ route('entregaCintaTonner.index') }}"><i class="fas fa-paper-plane"></i> Entrega de Cinta/Tonners</a>
+                                        <a class="dropdown-item" href="{{ route('entregaBateria.index') }}"><i class="fas fa-battery-three-quarters"></i> Entrega de Baterias</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('cmd') }}"><i class="fas fa-code"></i> Consola de comandos</a>
                                         <div class="dropdown-divider"></div>

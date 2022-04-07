@@ -8,20 +8,26 @@
                     <h3><i class="fas fa-wrench"></i> Control de Averías</h3>
                 </div>
                 <div class="card-body">
-                    <div class="row pt-2">
-                            <div class="col-md-12 text-right">
-                                <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-filter"></i> Cambiar estado
-                                    </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="{{route('averia.index',['estado'=>1])}}">Abierto</a>
-                                        <a class="dropdown-item" href="{{route('averia.index',['estado'=>2])}}">En Proceso</a>
-                                        <a class="dropdown-item" href="{{route('averia.index',['estado'=>3])}}">Cerrado</a>
-                                    </div>
+                    <div class="row pt-2">
+                        <div class="col">
+                            <a class="btn btn-primary float-right" href="{{route('averia.create')}}"><i class="fas fa-wrench"></i> Crear avería</a>
+
+                            <div class="dropdown show float-right mr-2">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-filter"></i> Cambiar estado
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{route('averia.index',['estado'=>1])}}">Abierto</a>
+                                    <a class="dropdown-item" href="{{route('averia.index',['estado'=>2])}}">En Proceso</a>
+                                    <a class="dropdown-item" href="{{route('averia.index',['estado'=>3])}}">Cerrado</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('averia.index')}}">Restablecer</a>
                                 </div>
                             </div>
+                        </div>
+
                     </div>
                     <hr>
                     <div class="row">
